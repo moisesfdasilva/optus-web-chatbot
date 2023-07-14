@@ -5,8 +5,9 @@ function Transition() {
     <div>
       <header>Optus</header>
       <p>new</p>
-      <p>historic</p>
-      <footer>Send message</footer>
+      <h1>historic:</h1>
+      <p>...</p>
+      <p>...</p>
     </div>
   );
 }
