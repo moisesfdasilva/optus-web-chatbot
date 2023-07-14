@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Message from '../component/message';
+import ChatFooter from '../component/chatFooter';
 import sendResponse from '../utils/sendResponse';
 
 function Chat() {
@@ -29,36 +30,28 @@ function Chat() {
   };
 
   return (
-    <div>
+    <>
       <header>Optus</header>
 
-      { messages.map((msg, index) => (
-        < Message
-          key={ index }
-          date={ msg.date }
-          user={ msg.user }
-          message={ msg.message }
-        />
-      )) }
+      <main>
+        { messages.map((msg, index) => (
+          <Message
+            key={ index }
+            date={ msg.date }
+            user={ msg.user }
+            message={ msg.message }
+          />
+        )) }
+      </main>
 
       <footer>
-        <form onSubmit={ sendMessage }>
-          <label htmlFor="message">
-            Send message:
-            <input
-              value={ newMessage.message }
-              type="text"
-              name="message"
-              placeholder="message"
-              onChange={ messageChange }
-            />
-          </label>
-          <button type="button" onClick={ sendMessage }>
-            Create Account
-          </button>
-        </form>
+        < ChatFooter
+          sendMessage={ sendMessage }
+          message={ newMessage.message }
+          messageChange={ messageChange }
+        />
       </footer>
-    </div>
+    </>
   );
 }
 
