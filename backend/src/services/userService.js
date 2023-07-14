@@ -1,5 +1,8 @@
-const getAbc = async () => {
-  return { usuario: 'USUÁRIO' };
+const { User } = require('../models');
+
+const getAll = async () => {
+  const usersList = await User.findAll();
+  return usersList;
 };
 
-module.exports = { getAbc };
+module.exports = { getAll };

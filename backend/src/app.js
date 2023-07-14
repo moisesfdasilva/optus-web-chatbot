@@ -1,8 +1,8 @@
 const express = require('express');
-const { getAbc } = require('./controllers/userController');
+const { getAll } = require('./controllers/userController');
 
 const app = express();
 app.use(express.json());
-app.use('/user', getAbc);
+app.use('/user/all', getAll);
 
 module.exports = app;
