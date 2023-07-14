@@ -7,12 +7,14 @@ module.exports = {
       [{
         email: 'username1@gmail.com',
         username: 'username1',
-        password: '123',
+        password: '202cb962ac59075b964b07152d234b70',
+        //password:123
       },
       {
         email: 'username2@gmail.com',
         username: 'username2',
-        password: 'abc',
+        password: '900150983cd24fb0d6963f7d28e17f72',
+        //password:abc
       },
       ], { timestamps: false });    
   },
