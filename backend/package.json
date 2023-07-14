@@ -4,9 +4,10 @@
   "description": "web-chat",
   "main": "index.js",
   "scripts": {
-    "run": "node src/server.js",
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "mocha src/tests/**/*.test.js --exit"
+    "test": "mocha src/tests/**/*.test.js --exit",
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "author": "Moises Fernandes",
   "license": "ISC",
