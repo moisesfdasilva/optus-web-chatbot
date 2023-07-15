@@ -8,9 +8,7 @@ const getAll = async (_req, res) => {
 
 const addUser = async (req, res) => {
   const { email, username, password } = req.body;
-
   const newUser = await userService.addUser({ email, username, password });
-
   return res.status(201).json(newUser);
 };
 
@@ -19,7 +17,6 @@ const login = async (req, res) => {
   const hashPass = md5(password);
 
   const response = await userService.login({ username, hashPass });
-  console.log(response);
   if (response.message) {
     return res.status(401).json({ message: response.message });
   }
@@ -27,4 +24,15 @@ const login = async (req, res) => {
   return res.status(200).json(response);
 };
 
-module.exports = { getAll, addUser, login };
+const verifyUserToken = async (req, res) => {
+  const { authorization } = req.headers;
+  const response = userService.verifyUserToken(authorization);
+
+  if (response.message) {
+    return res.status(401).json({ message: response.message });
+  }
+
+  return res.status(200).json(response);
+};
+
+module.exports = { getAll, addUser, login, verifyUserToken };

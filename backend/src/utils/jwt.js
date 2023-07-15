@@ -5,7 +5,8 @@ const secret = process.env.JWT_SECRET || "pass";
 
 function tokenDecode(token) {
   const decoded = jwt.verify(token, secret);
-  return decoded.data;
+  const { id, email, username } = decoded;
+  return { id, email, username };
 }
 
 function tokenEncode(payload) {

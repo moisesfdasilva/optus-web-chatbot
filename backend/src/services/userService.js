@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const { tokenEncode } = require('../utils/jwt');
+const { tokenEncode, tokenDecode } = require('../utils/jwt');
 
 const getAll = async () => {
   const usersList = await User.findAll();
@@ -16,11 +16,21 @@ const login = async ({ username, hashPass }) => {
     where: { username, password: hashPass },
     attributes: { exclude: ['password'] },
   });
+
   if (!user) {
     return { message: 'Incorrect username or password.' };
   }
+
   const token = tokenEncode(user.dataValues);
   return { user, token };
 };
 
-module.exports = { getAll, addUser, login };
+const verifyUserToken = (token) => {
+  try {
+    return tokenDecode(token);
+  } catch (error) {
+    return { message: 'Token failure.' };
+  }
+};
+
+module.exports = { getAll, addUser, login, verifyUserToken };
