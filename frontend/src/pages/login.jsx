@@ -3,13 +3,13 @@ import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 
 function Login() {
+  const history = useHistory();
+
   const [inputLogin, setInputLogin] = useState({
     username: '',
     password: '',
     userNotFound: false,
   });
-
-  const history = useHistory();
 
   const inputLoginChange = ({ target }) => {
     const { name, value } = target;
@@ -29,15 +29,14 @@ function Login() {
 
     try {
       const { data } = await api.post('/user/login', { username, password });
-      const { user } = data;
-      console.log(user);
+      const { user, token } = data;
+      sessionStorage.setItem('user', JSON.stringify(user));
+      sessionStorage.setItem('token', JSON.stringify(token));
+      history.push('/transition');
     } catch {
       setInputLogin((prevState) => ({ ...prevState, userNotFound: true }));
     }
-    
   }
-
-  //useEffect(() => checkToken(), []);
 
   return (
     <main>
