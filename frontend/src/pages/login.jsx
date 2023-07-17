@@ -39,39 +39,44 @@ function Login() {
   }
 
   return (
-    <main>
-      <form>
-        <label htmlFor="username">
-          Username:
-          <input
-            value={ inputLogin.username }
-            type="text"
-            name="username"
-            placeholder="username"
-            onChange={ inputLoginChange }
-          />
-        </label>
-        <label htmlFor="password">
-          Password:
-          <input
-            value={ inputLogin.password }
-            type="password"
-            name="password"
-            placeholder="password"
-            onChange={ inputLoginChange }
-          />
-        </label>
-        <button type="button" onClick={ login }>
-          Login
-        </button>
-        <button type="button" onClick={ goToRegisterPage }>
-          Create Account
-        </button>
-      </form>
-      <div>
-        { inputLogin.userNotFound && <p>Incorrect username or password.</p> }
-      </div>
-    </main>
+    <>
+      <header>
+        <h1>Optus</h1>
+      </header>
+      <main>
+        <form>
+          <label htmlFor="username">
+            Username:
+            <input
+              value={ inputLogin.username }
+              type="text"
+              name="username"
+              placeholder="username"
+              onChange={ inputLoginChange }
+            />
+          </label>
+          <label htmlFor="password">
+            Password:
+            <input
+              value={ inputLogin.password }
+              type="password"
+              name="password"
+              placeholder="password"
+              onChange={ inputLoginChange }
+            />
+          </label>
+          <button type="button" onClick={ login }>
+            Login
+          </button>
+          <button type="button" onClick={ goToRegisterPage }>
+            Create Account
+          </button>
+        </form>
+        <div>
+          { inputLogin.userNotFound && <p>Incorrect username or password.</p> }
+        </div>
+      </main>
+    </>
   );
 }
 

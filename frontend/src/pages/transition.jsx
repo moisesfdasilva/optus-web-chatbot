@@ -1,14 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Transition() {
   return (
-    <div>
-      <header>Optus</header>
-      <p>new</p>
-      <h1>historic:</h1>
-      <p>...</p>
-      <p>...</p>
-    </div>
+    <>
+      <header>
+        <h1>Optus</h1>
+      </header>
+      <main>
+        <Link to="/chat">
+          <h2>new</h2>
+        </Link>
+        <h2>historic:</h2>
+        <p>...</p>
+        <p>...</p>
+      </main>
+    </>
   );
 }
 

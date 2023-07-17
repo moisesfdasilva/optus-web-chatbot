@@ -31,7 +31,9 @@ function Chat() {
 
   return (
     <>
-      <header>Optus</header>
+      <header>
+        <h1>Optus</h1>
+      </header>
 
       <main>
         { messages.map((msg, index) => (
