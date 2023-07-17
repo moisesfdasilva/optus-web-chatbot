@@ -10,7 +10,6 @@ function Transition() {
   useEffect(() => {
     const getAllMessages = async () => {
       const { data } = await api.get('/chat/user/1/all');
-      console.log(data);
       setPreviousMsg({ messages: data });
     };
     getAllMessages();

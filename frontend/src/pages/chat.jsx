@@ -5,8 +5,8 @@ import sendResponse from '../utils/sendResponse';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
-
   const [newMessage, setNewMessage] = useState({ date: '', user: '', message: '' });
+  const [statusMsg, setStatusMsg] = useState(0);
 
   const messageChange = ({ target }) => {
     const { name, value } = target;
@@ -16,17 +16,23 @@ function Chat() {
   const sendMessage = async (e) => {
     e.preventDefault()
 
+    // formatar para ficar no padrão
     const newDate = Date.now();
+    // session storage
     const newUser = 'Ricochete';
     setMessages((prevState) => ([ ...prevState, { ...newMessage, date: newDate, user: newUser }]));
 
     const msg = newMessage.message;
     setNewMessage((prevState) => ({ ...prevState, message: '' }));
 
-    const bootResponse = sendResponse(msg);
-    setTimeout(() => {
-      setMessages((prevState) => ([ ...prevState, bootResponse ]));
-    }, 1000);
+    const bootResponse = sendResponse(msg, statusMsg);
+
+    if (bootResponse) {
+      setTimeout(() => {
+        setMessages((prevState) => ([ ...prevState, bootResponse ]));
+        setStatusMsg();
+      }, 777);
+    }
   };
 
   return (
