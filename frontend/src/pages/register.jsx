@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import api from '../services/api';
 
 function Register() {
+  const history = useHistory();
+
   const [registry, setRegistry] = useState({
     email: '',
     username: '',
     password: '',
     repeatPass: '',
-    disableButton: true,
+    disableSaveButton: true,
     errorMessages: [],
   });
 
@@ -20,13 +24,8 @@ function Register() {
 
   const verifyFilledFields = () => {
     const { email, username, password, repeatPass } = registry;
-    let conf = true;
-
-    if (email && username && password && repeatPass) {
-      conf = false;
-    }
-
-    setRegistry((prevState) => ({ ...prevState, disableButton: conf }));
+    const isAllFilled = (email && username && password && repeatPass);
+    setRegistry((prevState) => ({ ...prevState, disableSaveButton: !isAllFilled }));
   }
 
   useEffect(() => verifyFilledFields(), [registry.password, registry.repeatPass]);
@@ -59,12 +58,18 @@ function Register() {
     return message.length;
   }
 
-  const saveRegistry = () => {
+  const saveRegistry = async () => {
     const messages = verifyRegistry();
     if (messages === 0) {
-      console.log("CRIA");
-      console.log("GERA O TOKEN");
-      console.log("REDIRECIONA PARA TRIAGEM");
+      const { email, username, password } = registry;
+      const { data } = await api.post('/user/new', { email, username, password });
+      console.log(data);
+
+      const { data: { user, token } } = await api.post('/user/login', { username, password });
+      sessionStorage.setItem('user', JSON.stringify(user));
+      sessionStorage.setItem('token', JSON.stringify(token));
+
+      history.push('/transition');
     }
   }
 
@@ -117,7 +122,7 @@ function Register() {
         <button
           type="button"
           onClick={ saveRegistry }
-          disabled={ registry.disableButton }
+          disabled={ registry.disableSaveButton }
         >
           Create
         </button>

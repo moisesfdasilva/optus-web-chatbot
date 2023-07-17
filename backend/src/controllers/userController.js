@@ -8,7 +8,10 @@ const getAll = async (_req, res) => {
 
 const addUser = async (req, res) => {
   const { email, username, password } = req.body;
-  const newUser = await userService.addUser({ email, username, password });
+  const hashPass = md5(password);
+
+  const newUser = await userService.addUser({ email, username, hashPass });
+
   return res.status(201).json(newUser);
 };
 

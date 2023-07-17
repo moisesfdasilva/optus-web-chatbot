@@ -6,9 +6,13 @@ const getAll = async () => {
   return usersList;
 };
 
-const addUser = async ({ email, username, password }) => {
-  const newUser = await User.create({ email, username, password });
-  return newUser;
+const addUser = async ({ email, username, hashPass }) => {
+  const newUser = await User.create({ email, username, password: hashPass });
+  return {
+    id: newUser.id,
+    email: newUser.email,
+    username: newUser.username,
+  };
 };
 
 const login = async ({ username, hashPass }) => {
