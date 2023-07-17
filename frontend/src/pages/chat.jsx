@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Message from '../component/message';
 import ChatFooter from '../component/chatFooter';
 import sendResponse from '../utils/sendResponse';
+import getCurrentDate from '../utils/getCurrentDate';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -16,8 +17,8 @@ function Chat() {
   const sendMessage = async (e) => {
     e.preventDefault()
 
-    // formatar para ficar no padrão
-    const newDate = Date.now();
+    const newDate = getCurrentDate();
+
     // session storage
     const newUser = 'Ricochete';
     setMessages((prevState) => ([ ...prevState, { ...newMessage, date: newDate, user: newUser }]));
