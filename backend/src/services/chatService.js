@@ -1,10 +1,5 @@
 const { Chat } = require('../models');
 
-const getAll = async () => {
-  const chatList = await Chat.findAll();
-  return chatList;
-};
-
 const getMessagesByUserId = async (id) => {
   const chatList = await Chat.findAll({
     where: { userId: id },
@@ -17,4 +12,4 @@ const addChat = async (id, messages) => {
   return chatList;
 }
 
-module.exports = { getAll, getMessagesByUserId, addChat };
+module.exports = { getMessagesByUserId, addChat };

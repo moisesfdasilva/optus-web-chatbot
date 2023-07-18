@@ -1,10 +1,5 @@
 const chatService = require('../services/chatService');
 
-const getAll = async (_req, res) => {
-  const chatsList = await chatService.getAll();
-  return res.status(200).json(chatsList);
-};
-
 const getMessagesByUserId = async (req, res) => {
   const { id } = req.params;
   const chatsList = await chatService.getMessagesByUserId(id);
@@ -18,4 +13,4 @@ const addChat = async (req, res) => {
   return res.status(201).json(newChat);
 }
 
-module.exports = { getAll, getMessagesByUserId, addChat };
+module.exports = { getMessagesByUserId, addChat };
