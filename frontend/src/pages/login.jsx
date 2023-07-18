@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
+import GeneralHeader from '../component/generalHeader'
 
 function Login() {
   const history = useHistory();
@@ -40,12 +41,10 @@ function Login() {
 
   return (
     <>
-      <header>
-        <h1>Optus</h1>
-      </header>
-      <main>
+      <GeneralHeader/>
+      <main className='login-body'>
         <form>
-          <label htmlFor="username">
+          <label htmlFor="username" className="login-username">
             Username:
             <input
               value={ inputLogin.username }
@@ -55,7 +54,7 @@ function Login() {
               onChange={ inputLoginChange }
             />
           </label>
-          <label htmlFor="password">
+          <label htmlFor="password" className="login-password">
             Password:
             <input
               value={ inputLogin.password }
@@ -65,12 +64,14 @@ function Login() {
               onChange={ inputLoginChange }
             />
           </label>
-          <button type="button" onClick={ login }>
-            Login
-          </button>
-          <button type="button" onClick={ goToRegisterPage }>
-            Create Account
-          </button>
+          <label htmlFor="buttons" className="login-buttons">
+            <button type="button" onClick={ login }>
+              Login
+            </button>
+            <button type="button" onClick={ goToRegisterPage }>
+              Create Account
+            </button>
+          </label>
         </form>
         <div>
           { inputLogin.userNotFound && <p>Incorrect username or password.</p> }

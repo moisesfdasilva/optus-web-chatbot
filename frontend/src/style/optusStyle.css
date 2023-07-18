@@ -1,0 +1,75 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: dodgerBlue;
+  color: white;
+  height: 60px;
+}
+
+.header-logo {
+  background: yellow;
+  border-radius: 25px;
+  height: 50px;
+  margin-right: 25px;
+  flex-flow: nowrap;
+}
+
+.header-logo-name {
+  color: green;
+  font-weight: bold;
+}
+
+.header-title {
+  margin-bottom: 5px;
+}
+
+.header-subtitle {
+  margin-top: 5px;
+}
+
+.login-body {
+  display: flex;
+  justify-content: center;
+}
+
+.login-username {
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.login-password {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.login-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.register-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-form-input-text {
+  margin-bottom: 5px;
+}
+
+.register-form-div-btn {
+  align-items: center;
+}
+
+.register-form-div-btn {
+  margin-top: 15px;
+}
+
+.register-div-error {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
