@@ -42,10 +42,12 @@ function Login() {
   return (
     <>
       <GeneralHeader/>
-      <main className="login-body">
+      <main className="login-main">
         <form>
-          <label htmlFor="username" className="login-username">
-            Username:
+          <label htmlFor="username">
+            <p className="login-form-input-text">
+              Username:
+            </p>
             <input
               value={ inputLogin.username }
               type="text"
@@ -54,8 +56,10 @@ function Login() {
               onChange={ inputLoginChange }
             />
           </label>
-          <label htmlFor="password" className="login-password">
-            Password:
+          <label htmlFor="password">
+            <p className="login-form-input-text">
+              Password:
+            </p>
             <input
               value={ inputLogin.password }
               type="password"

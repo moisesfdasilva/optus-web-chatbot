@@ -17,7 +17,7 @@ function sendResponse(msg, status) {
       return {
         date: getCurrentDate(),
         user: 'boot',
-        message: 'Hi! How could I help you?',
+        message: 'Hi! Could I help you with a loan?',
         newStatus: 1,
       };
     }
@@ -28,10 +28,11 @@ function sendResponse(msg, status) {
       const text1 = "Do you want to apply for a loan? - ";
       const text2 = "Loan conditions - ";
       const text3 = "Help";
+      const text = text1 + text2 + text3;
       return {
         date: getCurrentDate(),
         user: 'boot',
-        message: [text1, text2, text3],
+        message: [text],
         newStatus: 1,
       };
     }

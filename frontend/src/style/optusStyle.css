@@ -1,4 +1,6 @@
 header {
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,15 +9,15 @@ header {
   height: 60px;
 }
 
-.header-logo {
-  background: yellow;
+.header-logo, .chat-intro-logo {
+  background: gold;
   border-radius: 25px;
   height: 50px;
   margin-right: 25px;
   flex-flow: nowrap;
 }
 
-.header-logo-name {
+.header-logo-name, .chat-intro-logo-name {
   color: green;
   font-weight: bold;
 }
@@ -30,30 +32,21 @@ header {
   font-size: small;
 }
 
-.login-body {
+.login-main, .register-main {
+  padding-top: 80px;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.login-username {
-  display: flex;
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
-
-.login-password {
-  display: flex;
-  margin-bottom: 25px;
+.login-form-input-text {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .login-buttons {
+  margin-top: 5px;
   display: flex;
-  justify-content: center;
-}
-
-.register-main {
-  display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -77,12 +70,18 @@ header {
 }
 
 .transition-main {
+  padding-top: 80px;
   text-align: center;
+}
+
+.chat-main {
+  padding-top: 100px;
+  padding-bottom: 60px;
 }
 
 .chat-footer {
   display: flex;
-  position: absolute;
+  position: fixed;
   justify-content: center;
   align-items: center;
   bottom: 0;
@@ -96,4 +95,68 @@ header {
 .chat-footer-form {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.msg-user {
+  color: white;
+  background-color: blue;
+  margin: 15px;
+  border-radius: 30px;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.msg-user-text, .msg-user-text {
+  padding: 10px;
+}
+
+.msg-boot {
+  background-color: rgb(187, 183, 183);
+  margin: 15px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-right: auto;
+}
+
+.msg-boot-btn-options {
+  padding: 4px;
+  background: none;
+	border-style: none;
+  font-size: medium;
+	font-weight: bolder;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+  width: 100%;
+  text-align: left;
+}
+
+.msg-boot-text-options {
+  padding: 10px;
+  list-style-type: none;
+}
+
+.chat-intro {
+  width: 100%;
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.chat-intro-title {
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+.chat-intro-header-subtitle {
+  margin-top: 5px;
+  font-size: small;
+}
+
+.chat-intro-header-subtitle-bellow {
+  margin-top: 5px;
+  font-size: small;
+  color: gray;
 }

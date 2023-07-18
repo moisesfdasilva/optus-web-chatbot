@@ -58,10 +58,31 @@ function Chat() {
     saveMessages();
   }, [statusMsg]);
 
+  useEffect(() => { window.scroll(0 , document.body.scrollHeight); }, [messages]);
+
   return (
     <>
       <GeneralHeader/>
-      <main>
+      <main className="chat-main">
+        <div className="chat-intro">
+          <div className="chat-intro-logo">
+            <p className="chat-intro-logo-name">
+              Optus
+            </p>
+          </div>
+          <div>
+            <h2 className="chat-intro-title">
+              Optus
+            </h2>
+            <p className="chat-intro-header-subtitle">
+              419K people like this including 
+              Maha Mourad and 35 friends
+            </p>
+            <p className="chat-intro-header-subtitle-bellow">
+              Company
+            </p>
+          </div>
+        </div>
         { messages.map((msg, index) => (
           <Message
             key={ index }
@@ -71,6 +92,7 @@ function Chat() {
           />
         )) }
       </main>
+      <span id="final"></span>
       <footer className="chat-footer">
         < ChatFooter
           sendMessage={ sendMessage }

@@ -52,7 +52,7 @@ function Transition() {
               <p key={ index }>
                 <button type="button" onClick={ () => toCsv(msg.messages, index) }>
                   Conversation
-                  {` ${ msg.messages[msg.messages.length - 1].user }`}
+                  {` ${ msg.messages[0].user }`}
                   {` #${ index + 1 } -`}
                   {` ${ msg.messages[msg.messages.length - 1].date }`}
                 </button>
