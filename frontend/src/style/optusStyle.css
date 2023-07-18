@@ -26,6 +26,8 @@ header {
 
 .header-subtitle {
   margin-top: 5px;
+  margin-bottom: 25px;
+  font-size: small;
 }
 
 .login-body {
@@ -72,4 +74,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.transition-main {
+  text-align: center;
 }

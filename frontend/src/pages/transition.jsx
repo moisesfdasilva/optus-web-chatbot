@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../services/api';
+import GeneralHeader from '../component/generalHeader'
 
 function Transition() {
   const [previousMsg, setPreviousMsg] = useState({
@@ -9,13 +10,14 @@ function Transition() {
 
   useEffect(() => {
     const getAllMessages = async () => {
-      const { data } = await api.get('/chat/user/1/all');
+      const { id } = JSON.parse(sessionStorage.getItem('user'));
+      const { data } = await api.get(`/chat/user/${id}/all`);
       setPreviousMsg({ messages: data });
     };
     getAllMessages();
   }, []);
 
-  const toCsv = (msgs) => {
+  const toCsv = (msgs, index) => {
     let sheet = 'date, user, message';
     msgs.forEach((msg) => {
       sheet = `${ sheet }\n${ msg.date },${ msg.user },${ msg.message }`;
@@ -26,7 +28,7 @@ function Transition() {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "my_data.csv");
+    link.setAttribute("download", `conversation-${ index + 1 }.csv`);
     document.body.appendChild(link);
 
     link.click();
@@ -34,25 +36,30 @@ function Transition() {
 
   return (
     <>
-      <header>
-        <h1>Optus</h1>
-      </header>
-      <main>
-        <Link to="/chat">
-          <h2>new</h2>
-        </Link>
-        <h2>historic:</h2>
-        <ul>
-          { (previousMsg.messages.length === 0) && <li>NONE</li> }
-          { (previousMsg.messages.length > 0) && previousMsg.messages.map((msg, index) => (
-            <li key={ index }>
-              <button type="button" onClick={ () => toCsv(msg.messages) }>
-                {`Conversation user #${ msg.userId } -`}
-                {` ${ msg.messages[msg.messages.length - 1].date }`}
-              </button>
-            </li>
-          ))}
-        </ul>
+      <GeneralHeader/>
+      <main className="transition-main">
+        <div>
+          <Link to="/chat">
+            <h2>New Conversation</h2>
+          </Link>
+        </div>
+        <div>
+          <h2>Conversation history:</h2>
+          <p>(Click to export)</p>
+          <nav className="transition-historic-ul">
+            { (previousMsg.messages.length === 0) && <p>EMPTY</p> }
+            { (previousMsg.messages.length > 0) && previousMsg.messages.map((msg, index) => (
+              <p key={ index }>
+                <button type="button" onClick={ () => toCsv(msg.messages, index) }>
+                  Conversation
+                  {` ${ msg.messages[msg.messages.length - 1].user }`}
+                  {` #${ index + 1 } -`}
+                  {` ${ msg.messages[msg.messages.length - 1].date }`}
+                </button>
+              </p>
+            ))}
+          </nav>
+        </div>
       </main>
     </>
   );
