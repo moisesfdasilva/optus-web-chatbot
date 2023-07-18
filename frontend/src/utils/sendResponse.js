@@ -1,6 +1,15 @@
 import getCurrentDate from './getCurrentDate';
 
 function sendResponse(msg, status) {
+  if (msg.toLowerCase().includes('goodbye')) {
+    return {
+      date: getCurrentDate(),
+      user: 'boot',
+      message: 'Goodbye!',
+      newStatus: 2,
+    };
+  }
+
   if (status === 0) {
     if (msg.toLowerCase().includes('hello') || (
       msg.toLowerCase().includes('good')) || (
@@ -26,15 +35,6 @@ function sendResponse(msg, status) {
         newStatus: 1,
       };
     }
-  }
-
-  if (msg.toLowerCase().includes('goodbye')) {
-    return {
-      date: getCurrentDate(),
-      user: 'boot',
-      message: 'Goodbye!',
-      newStatus: 2,
-    };
   }
 }
 

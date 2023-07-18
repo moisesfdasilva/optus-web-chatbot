@@ -13,8 +13,7 @@ const getMessagesByUserId = async (id) => {
 }
 
 const addChat = async (id, messages) => {
-  const messagesJson = JSON.stringify(messages);
-  const chatList = await Chat.create({ userId: id, messages: messagesJson });
+  const chatList = await Chat.create({ userId: id, messages });
   return chatList;
 }
 

@@ -14,7 +14,7 @@ function ChatFooter({ sendMessage, message, messageChange }) {
           />
       </label>
         <button type="button" onClick={ sendMessage }>
-          Create Account
+          Send message
       </button>
     </form>
   )
