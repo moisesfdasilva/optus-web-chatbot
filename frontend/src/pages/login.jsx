@@ -77,10 +77,10 @@ function Login() {
             </button>
           </label>
         </form>
-        <div>
-          { inputLogin.userNotFound && <p>Incorrect username or password.</p> }
-        </div>
       </main>
+      <div className="register-div-error">
+        { inputLogin.userNotFound && <p>Incorrect username or password.</p> }
+      </div>
     </>
   );
 }

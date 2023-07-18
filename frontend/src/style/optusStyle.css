@@ -50,6 +50,13 @@ header {
   justify-content: center;
 }
 
+.login-div-error, .register-div-error {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .register-form-input-text {
   margin-bottom: 5px;
 }
@@ -60,13 +67,6 @@ header {
 
 .register-form-div-btn {
   margin-top: 15px;
-}
-
-.register-div-error {
-  color: red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .transition-main {
