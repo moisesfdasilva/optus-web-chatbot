@@ -2,7 +2,7 @@ import React from 'react';
 
 function ChatFooter({ sendMessage, message, messageChange }) {
   return (
-    <form onSubmit={ sendMessage }>
+    <form onSubmit={ sendMessage } className="chat-footer-form">
       <label htmlFor="message">
         Send message:
           <input
@@ -15,7 +15,7 @@ function ChatFooter({ sendMessage, message, messageChange }) {
       </label>
         <button type="button" onClick={ sendMessage }>
           Send message
-      </button>
+        </button>
     </form>
   )
 }

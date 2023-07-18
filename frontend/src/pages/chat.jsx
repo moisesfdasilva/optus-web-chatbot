@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import GeneralHeader from '../component/generalHeader';
 import Message from '../component/message';
 import ChatFooter from '../component/chatFooter';
 import sendResponse from '../utils/sendResponse';
@@ -59,10 +60,7 @@ function Chat() {
 
   return (
     <>
-      <header>
-        <h1>Optus</h1>
-      </header>
-
+      <GeneralHeader/>
       <main>
         { messages.map((msg, index) => (
           <Message
@@ -73,8 +71,7 @@ function Chat() {
           />
         )) }
       </main>
-
-      <footer>
+      <footer className="chat-footer">
         < ChatFooter
           sendMessage={ sendMessage }
           message={ newMessage.message }

@@ -64,7 +64,6 @@ function Register() {
     if (messages === 0) {
       const { email, username, password } = registry;
       const { data } = await api.post('/user/new', { email, username, password });
-      console.log(data);
 
       const { data: { user, token } } = await api.post('/user/login', { username, password });
       sessionStorage.setItem('user', JSON.stringify(user));

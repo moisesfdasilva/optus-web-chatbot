@@ -79,3 +79,21 @@ header {
 .transition-main {
   text-align: center;
 }
+
+.chat-footer {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  background: white;
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+  width: 100%;
+}
+
+.chat-footer-form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

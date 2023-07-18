@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
-import GeneralHeader from '../component/generalHeader'
+import GeneralHeader from '../component/generalHeader';
 
 function Login() {
   const history = useHistory();
@@ -42,7 +42,7 @@ function Login() {
   return (
     <>
       <GeneralHeader/>
-      <main className='login-body'>
+      <main className="login-body">
         <form>
           <label htmlFor="username" className="login-username">
             Username:
