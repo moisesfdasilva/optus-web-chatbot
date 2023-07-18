@@ -106,7 +106,7 @@ header {
   margin-left: auto;
 }
 
-.msg-user-text, .msg-user-text {
+.msg-simple-text {
   padding: 10px;
 }
 
@@ -119,13 +119,11 @@ header {
 }
 
 .msg-boot-btn-options {
-  padding: 4px;
+  padding: 5px;
   background: none;
 	border-style: none;
   font-size: medium;
 	font-weight: bolder;
-  border-bottom: 1px solid white;
-  border-top: 1px solid white;
   width: 100%;
   text-align: left;
 }
