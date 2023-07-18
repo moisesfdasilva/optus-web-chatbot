@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Message from '../component/message';
 import ChatFooter from '../component/chatFooter';
 import sendResponse from '../utils/sendResponse';
+import getCurrentDate from '../utils/getCurrentDate';
+import api from '../services/api';
 
 function Chat() {
-  const [messages, setMessages] = useState([]);
+  const history = useHistory();
 
+  const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState({ date: '', user: '', message: '' });
+  const [statusMsg, setStatusMsg] = useState(0);
 
   const messageChange = ({ target }) => {
     const { name, value } = target;
@@ -16,22 +21,47 @@ function Chat() {
   const sendMessage = async (e) => {
     e.preventDefault()
 
-    const newDate = Date.now();
-    const newUser = 'Ricochete';
-    setMessages((prevState) => ([ ...prevState, { ...newMessage, date: newDate, user: newUser }]));
+    const newDate = getCurrentDate();
+
+    const { username } = JSON.parse(sessionStorage.getItem('user'));
+    setMessages((prevState) => ([ ...prevState,
+      { ...newMessage, date: newDate, user: username }]));
 
     const msg = newMessage.message;
     setNewMessage((prevState) => ({ ...prevState, message: '' }));
 
-    const bootResponse = sendResponse(msg);
-    setTimeout(() => {
-      setMessages((prevState) => ([ ...prevState, bootResponse ]));
-    }, 1000);
+    const bootResponse = sendResponse(msg, statusMsg);
+
+    if (bootResponse) {
+      setTimeout(() => {
+        setMessages((prevState) => ([ ...prevState, {
+          date: bootResponse.date,
+          user: bootResponse.user,
+          message: bootResponse.message,
+        }]));
+        setStatusMsg(bootResponse.newStatus);
+      }, 777);
+    }
   };
+
+  useEffect(() => {
+    const saveMessages = async () => {
+      if (statusMsg === 2) {
+        const { id } = JSON.parse(sessionStorage.getItem('user'));
+        await api.post(`/chat/new/${id}`, { messages });
+        setTimeout(() => {
+          history.push('/transition');
+        }, 1000);
+      }
+    };
+    saveMessages();
+  }, [statusMsg]);
 
   return (
     <>
-      <header>Optus</header>
+      <header>
+        <h1>Optus</h1>
+      </header>
 
       <main>
         { messages.map((msg, index) => (
