@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
+import GeneralHeader from '../component/generalHeader';
 
 function Login() {
   const history = useHistory();
@@ -40,13 +41,13 @@ function Login() {
 
   return (
     <>
-      <header>
-        <h1>Optus</h1>
-      </header>
-      <main>
+      <GeneralHeader/>
+      <main className="login-main">
         <form>
           <label htmlFor="username">
-            Username:
+            <p className="login-form-input-text">
+              Username:
+            </p>
             <input
               value={ inputLogin.username }
               type="text"
@@ -56,7 +57,9 @@ function Login() {
             />
           </label>
           <label htmlFor="password">
-            Password:
+            <p className="login-form-input-text">
+              Password:
+            </p>
             <input
               value={ inputLogin.password }
               type="password"
@@ -65,17 +68,19 @@ function Login() {
               onChange={ inputLoginChange }
             />
           </label>
-          <button type="button" onClick={ login }>
-            Login
-          </button>
-          <button type="button" onClick={ goToRegisterPage }>
-            Create Account
-          </button>
+          <label htmlFor="buttons" className="login-buttons">
+            <button type="button" onClick={ login }>
+              Login
+            </button>
+            <button type="button" onClick={ goToRegisterPage }>
+              Create Account
+            </button>
+          </label>
         </form>
-        <div>
-          { inputLogin.userNotFound && <p>Incorrect username or password.</p> }
-        </div>
       </main>
+      <div className="register-div-error">
+        { inputLogin.userNotFound && <p>Incorrect username or password.</p> }
+      </div>
     </>
   );
 }

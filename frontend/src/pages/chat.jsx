@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import GeneralHeader from '../component/generalHeader';
 import Message from '../component/message';
 import ChatFooter from '../component/chatFooter';
 import sendResponse from '../utils/sendResponse';
@@ -57,13 +58,31 @@ function Chat() {
     saveMessages();
   }, [statusMsg]);
 
+  useEffect(() => { window.scroll(0 , document.body.scrollHeight); }, [messages]);
+
   return (
     <>
-      <header>
-        <h1>Optus</h1>
-      </header>
-
-      <main>
+      <GeneralHeader/>
+      <main className="chat-main">
+        <div className="chat-intro">
+          <div className="chat-intro-logo">
+            <p className="chat-intro-logo-name">
+              Optus
+            </p>
+          </div>
+          <div>
+            <h2 className="chat-intro-title">
+              Optus
+            </h2>
+            <p className="chat-intro-header-subtitle">
+              419K people like this including 
+              Maha Mourad and 35 friends
+            </p>
+            <p className="chat-intro-header-subtitle-bellow">
+              Company
+            </p>
+          </div>
+        </div>
         { messages.map((msg, index) => (
           <Message
             key={ index }
@@ -73,8 +92,8 @@ function Chat() {
           />
         )) }
       </main>
-
-      <footer>
+      <span id="final"></span>
+      <footer className="chat-footer">
         < ChatFooter
           sendMessage={ sendMessage }
           message={ newMessage.message }
