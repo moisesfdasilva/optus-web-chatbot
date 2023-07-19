@@ -20,6 +20,7 @@ Aplicação em funcionamento, com os testes inclusos.
 Fazer o Clone do repositório.
 
 ### Instalação e Execução
+...
 
 ## Contribuintes
 |Nome|GitHub|
