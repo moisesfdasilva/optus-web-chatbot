@@ -73,14 +73,14 @@ function Login() {
           <label htmlFor="buttons" className="login-buttons">
             <button
               type="button"
-              data-testid="btn-login"
+              data-testid="lgn-btn-login"
               onClick={ login }
             >
               Login
             </button>
             <button
               type="button"
-              data-testid="btn-create"
+              data-testid="lgn-btn-create"
               onClick={ goToRegisterPage }
             >
               Create Account
@@ -89,7 +89,11 @@ function Login() {
         </form>
       </main>
       <div className="register-div-error">
-        { inputLogin.userNotFound && <p>Incorrect username or password.</p> }
+        { inputLogin.userNotFound && (
+          <p data-testid="lgn-message-incUserOrPass">
+            Incorrect username or password.
+          </p>
+        )}
       </div>
     </>
   );

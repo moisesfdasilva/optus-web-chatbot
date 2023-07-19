@@ -26,7 +26,7 @@ function GeneralHeader() {
         { (page.includes('register') || page.includes('chat')) && (
           <button
             type="button"
-            data-testid="hdr-loginout"
+            data-testid="hdr-btn-return"
             onClick={ toGoBack }
           >
             return
@@ -52,7 +52,7 @@ function GeneralHeader() {
         { !(page.includes('login') || page.includes('register')) && (
           <button
             type="button"
-            data-testid="hdr-loginout"
+            data-testid="hdr-btn-logout"
             onClick={ logout }
           >
             logout

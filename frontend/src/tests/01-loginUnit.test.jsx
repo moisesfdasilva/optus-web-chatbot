@@ -12,13 +12,11 @@ describe('1. Testes da tela de Login:', () => {
     const mockLogin = jest.spyOn(api, 'post');
     mockLogin.mockImplementation(() => Promise.resolve(outputLoginMock));
 
-    const { history } =renderWithRouter(
-      <App />
-    );
+    const { history } = renderWithRouter(<App />);
 
     const inputUsername = screen.getByTestId('lgn-username');
     const inputPassword = screen.getByTestId('lgn-password');
-    const loginButton = screen.getByTestId('btn-login');
+    const loginButton = screen.getByTestId('lgn-btn-login');
 
     userEvent.type(inputUsername, 'coelho-ricochete');
     userEvent.type(inputPassword, 'bing-bing-bing!');
@@ -28,5 +26,38 @@ describe('1. Testes da tela de Login:', () => {
 
     const { location: { pathname } } = history;
     expect(pathname).toBe('/transition');
+
+    const logOutButton = screen.getByTestId('hdr-btn-logout');
+
+    userEvent.click(logOutButton);
+  });
+
+  it(`1.2. Verificação se ao logar com usuário e/ou senha inválidos é apresentada a 
+  mensagem de erro.`, async () => {
+    const mockLogin = jest.spyOn(api, 'post');
+    mockLogin.mockImplementation(() => Promise.reject());
+
+    renderWithRouter(<App />);
+
+    const inputUsername = screen.getByTestId('lgn-username');
+    const inputPassword = screen.getByTestId('lgn-password');
+    const loginButton = screen.getByTestId('lgn-btn-login');
+
+    userEvent.type(inputUsername, 'incorrectUsername');
+    userEvent.type(inputPassword, 'incorrectPassword');
+    userEvent.click(loginButton);
+
+    await waitFor(() => screen.getByTestId('lgn-message-incUserOrPass'));
+  });
+
+  it('1.3. Verificação do redirecionamento para a tela register.', async () => {
+    const { history } = renderWithRouter(<App />);
+
+    const createButton = screen.getByTestId('lgn-btn-create');
+
+    userEvent.click(createButton);
+
+    const { location: { pathname } } = history;
+    expect(pathname).toBe('/register');
   });
 });
