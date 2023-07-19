@@ -47,6 +47,7 @@ function Message({ user, message }) {
               value= { enebleInfo.btn2 }
               onClick={ changeDisableBtn }
               className="msg-boot-btn-options"
+              data-testid="msg-btn-loanConditions"
             >
               Loan conditions
             </button>

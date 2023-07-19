@@ -6,19 +6,18 @@ import App from '../App';
 import api from '../services/api';
 import { outputLoginMock } from './mock/transitionMock';
 
-describe('3. Testes da tela de Transition:', () => {
+describe('4. Testes da tela de Transition:', () => {
   afterEach(() => {    
     jest.clearAllMocks();
   });
 
-  it(`3.1. Verificação do redirecionamento para a tela messages ao criar no link e o botão
-  de retornar para a tela transition.`, async () => {
+  it(`4.1. Verificação do envio de mensagens no chat.`, async () => {
     const mockLogin = jest.spyOn(api, 'post');
     mockLogin.mockImplementation(() => Promise.resolve(outputLoginMock));
 
     jest.spyOn(window, 'scroll').mockImplementation(0);
 
-    const { history } = renderWithRouter(<App />);
+    renderWithRouter(<App />);
 
     act(() => {
       userEvent.type(screen.getByTestId('lgn-username'), 'coelho-ricochete');
@@ -31,25 +30,43 @@ describe('3. Testes da tela de Transition:', () => {
 
     await waitFor(() => screen.getByTestId('tsn-main'));
 
-    const linkToChat = screen.getByTestId('tsn-linkToChat');
-
     act(() => {
-      userEvent.click(linkToChat);
+      userEvent.click(screen.getByTestId('tsn-linkToChat'));
     });
 
-    const pathChat = history.location.pathname;
-    expect(pathChat).toBe('/chat');
+    const inpMessage = screen.getByTestId('msg-inp-message');
+    const btnMessage = screen.getByTestId('msg-btn-message');
 
-    const btnReturn = screen.getByTestId('hdr-btn-return');
     act(() => {
-      userEvent.click(btnReturn);
+      userEvent.type(inpMessage, 'Hi');
     });
 
-    const pathTransition = history.location.pathname;
-    expect(pathTransition).toBe('/transition');
+    act(() => {
+      userEvent.click(btnMessage);
+    });
 
     act(() => {
-      userEvent.click(screen.getByTestId('hdr-btn-logout'));
+      userEvent.type(inpMessage, 'Hi');
+    });
+
+    act(() => {
+      userEvent.click(btnMessage);
+    });
+
+    act(() => {
+      userEvent.type(inpMessage, 'Hello');
+    });
+
+    act(() => {
+      userEvent.click(btnMessage);
+    });
+
+    act(() => {
+      userEvent.type(inpMessage, 'loan');
+    });
+
+    act(() => {
+      userEvent.click(btnMessage);
     });
   });
 });
