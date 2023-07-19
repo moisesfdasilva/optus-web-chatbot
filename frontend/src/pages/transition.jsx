@@ -1,20 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import api from '../services/api';
 import GeneralHeader from '../component/generalHeader'
 
 function Transition() {
+  const history = useHistory();
+
   const [previousMsg, setPreviousMsg] = useState({
     messages: [],
   });
 
+  const getAllMessages = async () => {
+    const { id } = JSON.parse(sessionStorage.getItem('user'));
+    const { data } = await api.get(`/chat/user/${id}/all`);
+    setPreviousMsg({ messages: data });
+  };
+
+  const checkToken = async () => {
+    try {
+      const token = JSON.parse(sessionStorage.getItem('token'));
+      await api.get('/user/verify', { headers: { Authorization: token } });
+      await getAllMessages();
+    } catch (err) {
+      return history.push('/');
+    }
+  };
+
   useEffect(() => {
-    const getAllMessages = async () => {
-      const { id } = JSON.parse(sessionStorage.getItem('user'));
-      const { data } = await api.get(`/chat/user/${id}/all`);
-      setPreviousMsg({ messages: data });
-    };
-    getAllMessages();
+    checkToken();
   }, []);
 
   const toCsv = (msgs, index) => {

@@ -18,6 +18,7 @@ describe('2. Testes da tela de Register:', () => {
       .mockImplementation(() => Promise.resolve(outputLoginMock));
     const mockMsgs = jest.spyOn(api, 'get');
     mockMsgs
+      .mockImplementationOnce(() => Promise.resolve())
       .mockImplementation(() => Promise.resolve({ data: [] }));
 
     const { history } = renderWithRouter(<App />);
