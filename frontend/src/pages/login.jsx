@@ -53,6 +53,7 @@ function Login() {
               type="text"
               name="username"
               placeholder="username"
+              data-testid="lgn-username"
               onChange={ inputLoginChange }
             />
           </label>
@@ -65,14 +66,23 @@ function Login() {
               type="password"
               name="password"
               placeholder="password"
+              data-testid="lgn-password"
               onChange={ inputLoginChange }
             />
           </label>
           <label htmlFor="buttons" className="login-buttons">
-            <button type="button" onClick={ login }>
+            <button
+              type="button"
+              data-testid="btn-login"
+              onClick={ login }
+            >
               Login
             </button>
-            <button type="button" onClick={ goToRegisterPage }>
+            <button
+              type="button"
+              data-testid="btn-create"
+              onClick={ goToRegisterPage }
+            >
               Create Account
             </button>
           </label>

@@ -2,11 +2,17 @@ header {
   position: fixed;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background: dodgerBlue;
   color: white;
   height: 60px;
+}
+
+.header-logo-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-logo, .chat-intro-logo {
