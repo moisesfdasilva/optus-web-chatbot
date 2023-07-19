@@ -10,6 +10,10 @@ import {
 } from './mock/registerMock';
 
 describe('2. Testes da tela de Register:', () => {
+  afterEach(() => {    
+    jest.clearAllMocks();
+  });
+
   it(`2.1. Verificação do redirecionamento para a tela transition ao criar um usuário 
   com os dados válidos.`, async () => {
     const mockNewUser = jest.spyOn(api, 'post');
@@ -41,7 +45,9 @@ describe('2. Testes da tela de Register:', () => {
       userEvent.click(btnCreate);
     });
 
-    await waitFor(() => screen.getByTestId('tsn-main'));
+    await act(() => {
+      waitFor(() => screen.getByTestId('tsn-main'));
+    });
 
     const { location: { pathname } } = history;
     expect(pathname).toBe('/transition');

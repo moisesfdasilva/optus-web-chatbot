@@ -7,6 +7,10 @@ import api from '../services/api';
 import { outputLoginMock } from './mock/loginMock';
 
 describe('1. Testes da tela de Login:', () => {
+  afterEach(() => {    
+    jest.clearAllMocks();
+  });
+
   it(`1.1. Verificação do redirecionamento para a tela transition ao logar com usuário 
   e senha válidos.`, async () => {
     const mockLogin = jest.spyOn(api, 'post');

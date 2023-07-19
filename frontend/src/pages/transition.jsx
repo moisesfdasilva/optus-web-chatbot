@@ -52,7 +52,7 @@ function Transition() {
       <GeneralHeader/>
       <main className="transition-main">
         <div data-testid="tsn-main">
-          <Link to="/chat">
+          <Link to="/chat" data-testid="tsn-linkToChat">
             <h2>New Conversation</h2>
           </Link>
         </div>
