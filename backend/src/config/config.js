@@ -1,11 +1,11 @@
 require('dotenv').config();
 
 const config = {
-  username: process.env.MYSQL_USER || 'root',
-  password: process.env.MYSQL_PASSWORD || 'pass',
-  database: process.env.MYSQL_DATABASE || 'optus_web',
-  host: process.env.MYSQL_HOST || 'localhost',
-  port: process.env.MYSQL_PORT || '3306',
+  username: process.env.MYSQLUSER || 'root',
+  password: process.env.MYSQLPASSWORD || 'pass',
+  database: process.env.MYSQLDATABASE || 'optus_web',
+  host: process.env.MYSQLHOST || 'localhost',
+  port: process.env.MYSQLPORT || '3306',
   dialect: 'mysql',
 };
 
