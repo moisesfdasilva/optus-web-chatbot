@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import { screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './util/renderWithRouter';
 import App from '../App';
@@ -18,9 +18,14 @@ describe('1. Testes da tela de Login:', () => {
     const inputPassword = screen.getByTestId('lgn-password');
     const loginButton = screen.getByTestId('lgn-btn-login');
 
-    userEvent.type(inputUsername, 'coelho-ricochete');
-    userEvent.type(inputPassword, 'bing-bing-bing!');
-    userEvent.click(loginButton);
+    act(() => {
+      userEvent.type(inputUsername, 'coelho-ricochete');
+      userEvent.type(inputPassword, 'bing-bing-bing!');
+    });
+
+    act(() => {
+      userEvent.click(loginButton);
+    });
 
     await waitFor(() => screen.getByTestId('tsn-main'));
 
@@ -29,7 +34,9 @@ describe('1. Testes da tela de Login:', () => {
 
     const logOutButton = screen.getByTestId('hdr-btn-logout');
 
-    userEvent.click(logOutButton);
+    act(() => {
+      userEvent.click(logOutButton);
+    });
   });
 
   it(`1.2. Verificação se ao logar com usuário e/ou senha inválidos é apresentada a 
@@ -43,9 +50,14 @@ describe('1. Testes da tela de Login:', () => {
     const inputPassword = screen.getByTestId('lgn-password');
     const loginButton = screen.getByTestId('lgn-btn-login');
 
-    userEvent.type(inputUsername, 'incorrectUsername');
-    userEvent.type(inputPassword, 'incorrectPassword');
-    userEvent.click(loginButton);
+    act(() => {
+      userEvent.type(inputUsername, 'incorrectUsername');
+      userEvent.type(inputPassword, 'incorrectPassword');
+    });
+
+    act(() => {
+      userEvent.click(loginButton);
+    });
 
     await waitFor(() => screen.getByTestId('lgn-message-incUserOrPass'));
   });
@@ -55,7 +67,9 @@ describe('1. Testes da tela de Login:', () => {
 
     const createButton = screen.getByTestId('lgn-btn-create');
 
-    userEvent.click(createButton);
+    act(() => {
+      userEvent.click(createButton);
+    });
 
     const { location: { pathname } } = history;
     expect(pathname).toBe('/register');

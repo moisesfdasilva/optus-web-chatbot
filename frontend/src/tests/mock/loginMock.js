@@ -10,6 +10,4 @@ const outputLoginMock = {
   data: { user, token },
 };
 
-module.exports = {
-  outputLoginMock,
-};
+module.exports = { outputLoginMock };

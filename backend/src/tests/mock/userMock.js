@@ -12,7 +12,7 @@ const outputNewUserMock = {
 
 const inputLoginMock = {
   username: 'coelho-ricochete',
-  password: 'bing-bing-bing!'
+  password: 'bing-bing-bing!',
 };
 
 const outputLoginMock = {

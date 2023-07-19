@@ -63,7 +63,7 @@ function Register() {
     const messages = verifyRegistry();
     if (messages === 0) {
       const { email, username, password } = registry;
-      const { data } = await api.post('/user/new', { email, username, password });
+      await api.post('/user/new', { email, username, password });
 
       const { data: { user, token } } = await api.post('/user/login', { username, password });
       sessionStorage.setItem('user', JSON.stringify(user));
@@ -87,6 +87,7 @@ function Register() {
               type="email"
               name="email"
               placeholder="email"
+              data-testid="rgt-inp-email"
               onChange={ registryChange }
             />
           </label>
@@ -99,6 +100,7 @@ function Register() {
               type="text"
               name="username"
               placeholder="username"
+              data-testid="rgt-inp-username"
               onChange={ registryChange }
             />
           </label>
@@ -111,6 +113,7 @@ function Register() {
               type="password"
               name="password"
               placeholder="password"
+              data-testid="rgt-inp-password"
               onChange={ registryChange }
             />
           </label>
@@ -123,6 +126,7 @@ function Register() {
               type="password"
               name="repeatPass"
               placeholder="password"
+              data-testid="rgt-inp-repeatPass"
               onChange={ registryChange }
             />
           </label>
@@ -130,6 +134,7 @@ function Register() {
             <button
               type="button"
               onClick={ saveRegistry }
+              data-testid="rgt-btn-create"
               disabled={ registry.disableSaveButton }
             >
               Create

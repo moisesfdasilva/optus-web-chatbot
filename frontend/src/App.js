@@ -13,9 +13,9 @@ function App() {
         <Redirect to="/login" />
       </Route>
       <Route path="/login" component={ Login } />
+      <Route path="/register" component={ Register } />
       <Route path="/transition" component={ Transition } />
       <Route path="/chat" component={ Chat } />
-      <Route path="/register" component={ Register } />
     </Switch>
   );
 }
