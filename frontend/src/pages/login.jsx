@@ -53,6 +53,7 @@ function Login() {
               type="text"
               name="username"
               placeholder="username"
+              data-testid="lgn-username"
               onChange={ inputLoginChange }
             />
           </label>
@@ -65,21 +66,34 @@ function Login() {
               type="password"
               name="password"
               placeholder="password"
+              data-testid="lgn-password"
               onChange={ inputLoginChange }
             />
           </label>
           <label htmlFor="buttons" className="login-buttons">
-            <button type="button" onClick={ login }>
+            <button
+              type="button"
+              data-testid="lgn-btn-login"
+              onClick={ login }
+            >
               Login
             </button>
-            <button type="button" onClick={ goToRegisterPage }>
+            <button
+              type="button"
+              data-testid="lgn-btn-create"
+              onClick={ goToRegisterPage }
+            >
               Create Account
             </button>
           </label>
         </form>
       </main>
       <div className="register-div-error">
-        { inputLogin.userNotFound && <p>Incorrect username or password.</p> }
+        { inputLogin.userNotFound && (
+          <p data-testid="lgn-message-incUserOrPass">
+            Incorrect username or password.
+          </p>
+        )}
       </div>
     </>
   );

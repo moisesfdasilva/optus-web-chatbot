@@ -9,10 +9,13 @@ import Register from './pages/register';
 function App() {
   return (
     <Switch>
-      <Route exact path="/" component={ Login } />
+      <Route exact path="/">
+        <Redirect to="/login" />
+      </Route>
+      <Route path="/login" component={ Login } />
+      <Route path="/register" component={ Register } />
       <Route path="/transition" component={ Transition } />
       <Route path="/chat" component={ Chat } />
-      <Route path="/register" component={ Register } />
     </Switch>
   );
 }

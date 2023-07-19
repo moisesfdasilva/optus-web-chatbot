@@ -2,11 +2,17 @@ header {
   position: fixed;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background: dodgerBlue;
   color: white;
   height: 60px;
+}
+
+.header-logo-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-logo, .chat-intro-logo {
@@ -106,7 +112,7 @@ header {
   margin-left: auto;
 }
 
-.msg-user-text, .msg-user-text {
+.msg-simple-text {
   padding: 10px;
 }
 
@@ -119,13 +125,11 @@ header {
 }
 
 .msg-boot-btn-options {
-  padding: 4px;
+  padding: 5px;
   background: none;
 	border-style: none;
   font-size: medium;
 	font-weight: bolder;
-  border-bottom: 1px solid white;
-  border-top: 1px solid white;
   width: 100%;
   text-align: left;
 }
@@ -159,4 +163,16 @@ header {
   margin-top: 5px;
   font-size: small;
   color: gray;
+}
+
+.header-btn-goBack, .header-btn-logout {
+  padding: 5px;
+  color: white;
+  background: none;
+	border-style: none;
+  border:1px solid white;
+  font-size: x-small;
+	font-weight: bolder;
+  width: 100%;
+  text-align: left;
 }

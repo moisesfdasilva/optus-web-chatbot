@@ -1,11 +1,6 @@
 const { User } = require('../models');
 const { tokenEncode, tokenDecode } = require('../utils/jwt');
 
-const getAll = async () => {
-  const usersList = await User.findAll();
-  return usersList;
-};
-
 const addUser = async ({ email, username, hashPass }) => {
   const newUser = await User.create({ email, username, password: hashPass });
   return {
@@ -37,4 +32,4 @@ const verifyUserToken = (token) => {
   }
 };
 
-module.exports = { getAll, addUser, login, verifyUserToken };
+module.exports = { addUser, login, verifyUserToken };

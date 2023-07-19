@@ -17,7 +17,7 @@ function Message({ user, message }) {
   return (
     <div className={ user === 'boot' ? 'msg-boot' : 'msg-user' }>
       { !Array.isArray(message) && (
-        <p className="msg-user-text">{ message }</p>) }
+        <p className="msg-simple-text">{ message }</p>) }
       { Array.isArray(message) && <div>
         <div className="msg-boot-text">
           <p>
@@ -30,7 +30,7 @@ function Message({ user, message }) {
               Do you want to apply for a loan?
             </button>
             { enebleInfo.btn1 && <ul className="msg-boot-text-options">
-              <li>Nubank loans: Transparent, safe and on your terms.</li>
+              <li>Nubank loans: Transparent, safe and on your terms</li>
               <li>
                 <Link
                   to={{ pathname: "https://nubank.com.br/en/loans/" }}
@@ -47,6 +47,7 @@ function Message({ user, message }) {
               value= { enebleInfo.btn2 }
               onClick={ changeDisableBtn }
               className="msg-boot-btn-options"
+              data-testid="msg-btn-loanConditions"
             >
               Loan conditions
             </button>
@@ -72,7 +73,7 @@ function Message({ user, message }) {
               Help
             </button>
             { enebleInfo.btn3 && <ul className="msg-boot-text-options">
-              <li>Nubank loan: loan questions</li>
+              <li className="msg-boot-text-options-li">Nubank loan: loan questions</li>
               <li>
                 <Link
                   to={{ pathname: "https://blog.nubank.com.br/produtos/emprestimo-nubank/" }}

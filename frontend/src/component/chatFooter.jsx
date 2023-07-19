@@ -10,10 +10,15 @@ function ChatFooter({ sendMessage, message, messageChange }) {
             type="text"
             name="message"
             placeholder="message"
+            data-testid="msg-inp-message"
             onChange={ messageChange }
           />
       </label>
-      <button type="button" onClick={ sendMessage }>
+      <button
+        type="button"
+        data-testid="msg-btn-message"
+        onClick={ sendMessage }
+      >
         Send message
       </button>
     </form>
