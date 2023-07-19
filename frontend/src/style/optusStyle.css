@@ -164,3 +164,15 @@ header {
   font-size: small;
   color: gray;
 }
+
+.header-btn-goBack, .header-btn-logout {
+  padding: 5px;
+  color: white;
+  background: none;
+	border-style: none;
+  border:1px solid white;
+  font-size: x-small;
+	font-weight: bolder;
+  width: 100%;
+  text-align: left;
+}

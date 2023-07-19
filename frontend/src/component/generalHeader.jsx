@@ -28,8 +28,9 @@ function GeneralHeader() {
             type="button"
             data-testid="hdr-btn-return"
             onClick={ toGoBack }
+            className="header-btn-goBack"
           >
-            return
+            go back
           </button>
         )}
       </div>
@@ -54,6 +55,7 @@ function GeneralHeader() {
             type="button"
             data-testid="hdr-btn-logout"
             onClick={ logout }
+            className="header-btn-logout"
           >
             logout
           </button>
