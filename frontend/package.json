@@ -14,7 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "serve build -s -n -L -p $PORT",
     "build": "react-scripts build",
     "test": "react-scripts test --runInBand --detectOpenHandles --verbose",
     "eject": "react-scripts eject"
